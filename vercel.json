@@ -4,7 +4,7 @@
   "devCommand": "npm run dev -- --port $PORT",
   "installCommand": "npm install",
   "functions": {
-    "src/routes/api/**/*.ts": {
+    "api/**/*.js": {
       "runtime": "nodejs18.x",
       "maxDuration": 30
     }
