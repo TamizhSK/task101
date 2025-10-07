@@ -1,0 +1,27 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Scenario {
+  id        String   @id @default(cuid())
+  name      String
+  data      Json     // Stores all input parameters
+  results   Json     // Stores calculated results
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("scenarios")
+}
+
+model EmailCapture {
+  id        String   @id @default(cuid())
+  email     String
+  createdAt DateTime @default(now())
+
+  @@map("email_captures")
+}

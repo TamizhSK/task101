@@ -1,0 +1,39 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": "/_app/immutable/.+",
+			"headers": {
+				"cache-control": "public, immutable, max-age=31536000"
+			}
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^/?(?:/__data.json)?$",
+			"dest": "/"
+		},
+		{
+			"src": "^/api/report/generate/?(?:/__data.json)?$",
+			"dest": "/api/report/generate"
+		},
+		{
+			"src": "^/api/scenarios/?(?:/__data.json)?$",
+			"dest": "/api/scenarios"
+		},
+		{
+			"src": "^/api/scenarios/([^/]+?)/?(?:/__data.json)?$",
+			"dest": "/api/scenarios/[id]"
+		},
+		{
+			"src": "^/api/simulate/?(?:/__data.json)?$",
+			"dest": "/api/simulate"
+		},
+		{
+			"src": "/.*",
+			"dest": "/![-]/catchall"
+		}
+	],
+	"overrides": {}
+}

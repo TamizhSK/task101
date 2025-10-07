@@ -1,1 +1,11 @@
+node_modules/
+.svelte-kit/
+build/
+dist/
 package-lock.json
+.env
+.env.*
+.DS_Store
+.vscode/
+.idea/
+.npmrc
