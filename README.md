@@ -397,3 +397,47 @@ npx prisma generate
 
 
 **Built with ❤️ by TamizhSK
+#
+# 🚀 Quick Deployment Guide
+
+### Pre-Deployment Check
+```bash
+# Run deployment checklist
+npm run deploy:check
+```
+
+### 1. Database Setup (Choose One)
+
+#### Option A: Render PostgreSQL (Free Tier)
+1. Go to [Render Dashboard](https://dashboard.render.com)
+2. Create new PostgreSQL database
+3. Copy the external connection string
+
+#### Option B: Supabase (Recommended)
+1. Go to [Supabase](https://supabase.com)
+2. Create new project
+3. Get connection string from Settings → Database
+
+### 2. Vercel Deployment
+1. Push code to GitHub
+2. Connect repository to [Vercel](https://vercel.com)
+3. Set environment variables:
+   ```
+   DATABASE_URL=your-postgresql-connection-string
+   PUBLIC_APP_URL=https://your-app.vercel.app
+   SMTP_HOST=smtp.gmail.com (optional)
+   SMTP_PORT=587 (optional)
+   SMTP_USER=your-email@gmail.com (optional)
+   SMTP_PASS=your-app-password (optional)
+   ```
+4. Deploy!
+
+### 3. Post-Deployment
+```bash
+# Initialize database (run once)
+npx prisma db push
+```
+
+**🎉 Your ROI Calculator is now live!**
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)

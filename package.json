@@ -17,7 +17,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "deploy:check": "node deploy-check.js"
   },
   "repository": {
     "type": "git",

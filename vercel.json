@@ -1,14 +1,15 @@
 {
   "framework": "sveltekit",
   "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
+  "devCommand": "npm run dev -- --port $PORT",
   "installCommand": "npm install",
-  "outputDirectory": ".svelte-kit/output/client",
   "functions": {
     "src/routes/api/**/*.ts": {
-      "runtime": "nodejs18.x"
+      "runtime": "nodejs18.x",
+      "maxDuration": 30
     }
   },
+  "regions": ["iad1"],
   "env": {
     "DATABASE_URL": "@database_url",
     "PUBLIC_APP_URL": "@public_app_url",
