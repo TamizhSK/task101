@@ -2,17 +2,24 @@ import { PrismaClient } from '@prisma/client';
 
 const globalForPrisma = globalThis as typeof globalThis & {
   __prisma?: PrismaClient;
-  process?: { env?: Record<string, string | undefined> };
 };
 
-const nodeEnv = globalForPrisma.process?.env?.NODE_ENV ?? 'production';
+// Enhanced logging for debugging
+console.log('DATABASE_URL exists:', !!process.env.DATABASE_URL);
+console.log('NODE_ENV:', process.env.NODE_ENV);
 
 export const prisma =
   globalForPrisma.__prisma ??
   new PrismaClient({
-    log: nodeEnv === 'development' ? ['query', 'error', 'warn'] : ['error']
+    log: ['error', 'warn'],
+    errorFormat: 'pretty',
   });
 
-if (nodeEnv !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   globalForPrisma.__prisma = prisma;
 }
+
+// Test connection on initialization
+prisma.$connect().catch((error) => {
+  console.error('Failed to connect to database:', error);
+});
