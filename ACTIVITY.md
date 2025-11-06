@@ -1,4 +1,6 @@
-# Project Updates
+# Changelog
 
-- Updated documentation
-- Fixed formatting issues
+## [1.0.1] - 2025-11-06
+
+### Changed
+- Minor improvements
